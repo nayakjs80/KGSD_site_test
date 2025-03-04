@@ -106,7 +106,7 @@ def Login():
 			result = login_user(username,hashed_pswd)
 			if result:
 				st.success("Logged In as {}".format(username))
-				st.success("ssn is {}".format(get_ssn_by_username(username)))
+				# st.success("ssn is {}".format(get_ssn_by_username(username)))
 
 				seluser.username = username
 				seluser.password = password
@@ -128,7 +128,7 @@ def Login():
 					clean_db = pd.DataFrame(user_result,columns=["Username","Password","ssn"])
 					st.dataframe(clean_db)
 
-				st.text("username:{}, ssn:{}".format(seluser.username,seluser.ssn))
+				st.text("username:{}".format(seluser.username))
 			else:
 				st.warning("Incorrect Username/Password")
 
@@ -143,9 +143,10 @@ def SignUp():
 			
 			digits = ssn.replace('-','')
 
-			st.text("ssn:{}".format(digits))
+			st.text("주민번호:{}".format(digits))
 
-			if(is_valid_ssn(ssn)):
+			# if(is_valid_ssn(ssn)):
+			if(len(ssn) > 5):
 				create_tableuserlist()
 				create_tableuser()
 				add_userListdata(new_user,make_hashes(new_password), ssn)
