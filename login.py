@@ -185,10 +185,8 @@ seluser = clsUser("","","")
 
 def main():
 	
-	# st.title("Simple Login App")
-
 	st.set_page_config(
-		page_title="TestPage",
+		page_title="MainPage",
 		page_icon="👋",
 	)
 
@@ -201,8 +199,10 @@ def main():
     # demo_name = st.sidebar.selectbox("Choose a demo", page_names_to_funcs.keys())
     # page_names_to_funcs[demo_name]()
 
-	st.title("Simple Login App")
-	menu = ["Home","Login","SignUp","Test","InsertData","plotting_demo"]
+	st.title("KGSD Medical Data")
+
+	menu = ["Home","Login","SignUp","InsertData"]
+	# menu = ["Home","Login","SignUp","Test","InsertData","plotting_demo"]
 
 	choice = st.sidebar.selectbox("Menu",menu)
 	if choice == "Home":
@@ -219,11 +219,6 @@ def main():
 		st.write(result2)
 	elif choice == "InsertData":
 		# InsertData_demo()
-
-		# blood_sugar = st.textinput("혈당 입력", type='real')
-		# lactic_acid = st.textinput("락틱산 입력", type='real')
-        # blood_sugar = st.number_input("혈당 입력", format="%.2f")
-        # lactic_acid = st.number_input("락틱산 입력", format="%.2f")
 		
 		blood_sugar = st.number_input("혈당 입력", format="%.2f")
 		lactic_acid = st.number_input("락틱산 입력", format="%.2f")
