@@ -70,11 +70,32 @@ def get_ssn_by_username(username):
         return data[0]
     return None
 
-def Home():
-	st.subheader("Home")
+def Info_KGSD():
+    st.subheader("KGSD 의료 데이터")
+    st.markdown("""
+    KGSD 의료 데이터에 오신 것을 환영합니다. 저희는 의료 데이터를 관리하고 분석하는 신뢰할 수 있는 플랫폼입니다.
+    
+    **특징:**
+    - 안전한 사용자 인증 및 데이터 관리
+    - 의료 기록을 추가하고 조회할 수 있는 사용하기 쉬운 인터페이스
+    - 의료 데이터 통찰력을 위한 분석 도구
+    - 의료 동향을 더 잘 이해할 수 있는 데이터 시각화
+
+    **사용 방법:**
+    - 새 계정을 등록하거나 기존 자격 증명으로 로그인하세요
+    - 메뉴를 통해 다양한 기능에 접근하세요
+    - 새로운 의료 데이터를 추가하거나 기존 기록을 조회하세요
+    - 분석 도구를 사용하여 데이터에서 통찰력을 얻으세요
+
+    **문의하기:**
+    - 지원이나 문의 사항이 있으시면 k.gsd.ric@gmail.com으로 연락해 주세요
+
+    KGSD 의료 데이터를 선택해 주셔서 감사합니다!
+    """)
 
 def Login():
-		st.subheader("Login Section")
+		Info_KGSD()
+		# st.subheader("Login Section")
 		username = st.sidebar.text_input("User Name")
 		password = st.sidebar.text_input("Password",type='password')
 
@@ -90,6 +111,7 @@ def Login():
 				seluser.username = username
 				seluser.password = password
 				seluser.ssn = get_ssn_by_username(username)
+				seluser.IsLogin = True
 
 				# digit = seluser.ssn.replace('-','')
 				# TableInfo(digit)
@@ -111,13 +133,12 @@ def Login():
 				st.warning("Incorrect Username/Password")
 
 def SignUp():
-		st.subheader("Create New Account")
-		new_user = st.text_input("Username")
-		new_password = st.text_input("Password",type='password')
-
-		ssn = st.text_input("ssn")
+		st.sidebar.subheader("Create New Account")
+		new_user = st.sidebar.text_input("Username")
+		new_password = st.sidebar.text_input("Password",type='password')
+		ssn = st.sidebar.text_input("ssn")
 		
-		if st.button("Signup"):
+		if st.sidebar.button("Signup"):
 			# digits = [int(d) for d in ssn.replace('-', '')]
 			
 			digits = ssn.replace('-','')
@@ -134,6 +155,8 @@ def SignUp():
 				st.info("Go to Login Menu to login")
 			else:
 				st.info("Check your ssn ..")
+		else:
+			Info_KGSD()
 
 def Test():
 		result1 = triangle_area(200, 20)
@@ -191,22 +214,26 @@ def main():
 	)
 
 	st.sidebar.header("Hello")
-	st.markdown("Hello")
-
+	
 	# menu = ["Home","Login","SignUp","Test"]
 	# choice = st.sidebar.selectbox("Menu",menu)
 
     # demo_name = st.sidebar.selectbox("Choose a demo", page_names_to_funcs.keys())
     # page_names_to_funcs[demo_name]()
 
-	st.title("KGSD Medical Data")
+	st.title("Hello .. [KGSD Medical Data]")
+	# if(seluser.IsLogin):
+	# 	st.markdown("Login Info : not login")
+	# else:
+	# 	st.markdown("Login Info : user:{}",(seluser.username))
 
 	menu = ["Home","Login","SignUp","InsertData"]
 	# menu = ["Home","Login","SignUp","Test","InsertData","plotting_demo"]
 
-	choice = st.sidebar.selectbox("Menu",menu)
+	choice = st.sidebar.selectbox("Menu", menu, 1)
+
 	if choice == "Home":
-		st.subheader("Home")
+		Info_KGSD()
 	elif choice == "Login":
 		Login()
 	elif choice == "SignUp":
@@ -226,9 +253,9 @@ def main():
 		if(st.button("Add Data")):
 			add_user_data(seluser.ssn,blood_sugar,lactic_acid)
 	
-		digit = seluser.ssn.replace('-','')
-		TableInfo(digit)
-
+		if(seluser.IsLogin):
+			digit = seluser.ssn.replace('-','')
+			TableInfo(digit)
 
 	elif choice == "plotting_demo":
 		plotting_demo()
