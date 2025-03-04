@@ -93,6 +93,7 @@ def Info_KGSD():
     KGSD 의료 데이터를 선택해 주셔서 감사합니다!
     """)
 
+
 def Login():
 		Info_KGSD()
 		# st.subheader("Login Section")
@@ -108,10 +109,15 @@ def Login():
 				st.success("Logged In as {}".format(username))
 				# st.success("ssn is {}".format(get_ssn_by_username(username)))
 
-				seluser.username = username
-				seluser.password = password
-				seluser.ssn = get_ssn_by_username(username)
-				seluser.IsLogin = True
+				st.session_state.username = username
+				st.session_state.password = password
+				st.session_state.ssn = get_ssn_by_username(username)
+				st.session_state.IsLogin = True
+
+				# seluser.username = username
+				# seluser.password = password
+				# seluser.ssn = get_ssn_by_username(username)
+				# seluser.IsLogin = True
 
 				# digit = seluser.ssn.replace('-','')
 				# TableInfo(digit)
@@ -128,7 +134,7 @@ def Login():
 					clean_db = pd.DataFrame(user_result,columns=["Username","Password","ssn"])
 					st.dataframe(clean_db)
 
-				st.text("username:{}".format(seluser.username))
+				st.text("username:{}".format(st.session_state.username))
 			else:
 				st.warning("Incorrect Username/Password")
 
@@ -175,7 +181,10 @@ def TableInfo(table_name):
     # st.subheader("Table Information")
     # table_name = st.text_input("Enter table name")
 
-	c.execute('SELECT * FROM user')
+	# c.execute('SELECT * FROM user')
+	# columns = c.fetchall()
+
+	c.execute('SELECT * FROM user WHERE ssn = ?', (table_name,))
 	columns = c.fetchall()
 
 	if columns:
@@ -205,7 +214,7 @@ def TableInfo(table_name):
 # }
 
 seluser = clsUser("","","")
-
+# st.text("Execute seluser")
 
 def main():
 	
@@ -223,20 +232,27 @@ def main():
     # page_names_to_funcs[demo_name]()
 
 	st.title("Hello .. [KGSD Medical Data]")
-	# if(seluser.IsLogin):
-	# 	st.markdown("Login Info : not login")
-	# else:
-	# 	st.markdown("Login Info : user:{}",(seluser.username))
 
 	menu = ["Home","Login","SignUp","InsertData"]
 	# menu = ["Home","Login","SignUp","Test","InsertData","plotting_demo"]
 
-	choice = st.sidebar.selectbox("Menu", menu, 1)
+	choice = st.sidebar.selectbox("Menu", menu)
+
+	ExecuteCount = 0
+
 
 	if choice == "Home":
 		Info_KGSD()
 	elif choice == "Login":
 		Login()
+		ExecuteCount += 1
+		st.text("ExecuteCount:{}".format(ExecuteCount))
+
+		if(seluser.IsLogin):
+			st.markdown("Login Info : OK login")
+		else:
+			st.markdown("Login Info : NG login")
+
 	elif choice == "SignUp":
 		SignUp()
 	elif choice == "Test":
@@ -251,11 +267,17 @@ def main():
 		blood_sugar = st.number_input("혈당 입력", format="%.2f")
 		lactic_acid = st.number_input("락틱산 입력", format="%.2f")
 
-		if(st.button("Add Data")):
-			add_user_data(seluser.ssn,blood_sugar,lactic_acid)
-	
-		if(seluser.IsLogin):
-			digit = seluser.ssn.replace('-','')
+		st.text("IsLogin:{}".format(st.session_state.IsLogin))
+		st.text("username:{}".format(st.session_state.username))
+		st.text("ssn:{}".format(st.session_state.ssn))
+		# st.text("IsLogin:{}".format(seluser.IsLogin))
+
+		if(st.session_state.IsLogin):
+			if(st.button("Add Data")):
+				add_user_data(st.session_state.ssn, blood_sugar, lactic_acid)
+
+			digit = st.session_state.ssn.replace('-','')
+			st.text("Execute TableInfo({})".format(digit))
 			TableInfo(digit)
 
 	elif choice == "plotting_demo":
