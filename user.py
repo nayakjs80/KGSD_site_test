@@ -2,6 +2,7 @@ class clsUser:
     username = ""
     password = ""
     ssn = ""
+    IsLogin = False
 
     # def __init__():
     #     pass
