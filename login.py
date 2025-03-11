@@ -8,6 +8,9 @@ from user import clsUser
 from Plotting_demo import plotting_demo
 from geomatry import triangle_area, rectangle_area
 
+from PIL import Image
+import requests
+
 def make_hashes(password):
 	return hashlib.sha256(str.encode(password)).hexdigest()
 
@@ -216,6 +219,18 @@ def TableInfo(table_name):
 seluser = clsUser("","","")
 # st.text("Execute seluser")
 
+
+DEFAULT_IMG1_URL = (
+	"Image/IMG_1995-COLLAGE.jpg"
+	# "https://photos.google.com/share/AF1QipN_VeP1rOL91aSnl_q79Xr9p0dand4aTPWx1wjZ9uCqJ_7mkpKhBCiVnMTAvSQTHg/photo/AF1QipN6AR6xNKSuGt659jWij5h45epQ0ladTi_RlYDo?key=TkhaSHU0cGJxemR1bEZvWk8tdlB4MzliYklZX0pn"
+	# "https://photos.app.goo.gl/cr9YBqoSch4dYiXX8"
+    # "https://juxtapose.knightlab.com/static/img/Sochi_11April2005.jpg"
+)
+
+def fetch_img_from_url(url: str) -> Image:
+    img = Image.open(requests.get(url, stream=True).raw)
+    return img
+
 def main():
 	
 	st.set_page_config(
@@ -225,13 +240,22 @@ def main():
 
 	st.sidebar.header("Hello")
 	
+	img = Image.open(DEFAULT_IMG1_URL)
+	st.image(img, caption="Image caption", width=800, channels="RGB",)
+
+	# form = st.form(key="Image comparison")
+	# img1_url = form.text_input("Image one url", value=DEFAULT_IMG1_URL)
+	# img1 = fetch_img_from_url(DEFAULT_IMG1_URL)
+	# submit = form.form_submit_button("Submit")
+
+	
 	# menu = ["Home","Login","SignUp","Test"]
 	# choice = st.sidebar.selectbox("Menu",menu)
 
     # demo_name = st.sidebar.selectbox("Choose a demo", page_names_to_funcs.keys())
     # page_names_to_funcs[demo_name]()
 
-	st.title("Hello .. [KGSD Medical Data]")
+	st.title("Hello .. [KGSD]")
 
 	menu = ["Home","Login","SignUp","InsertData"]
 	# menu = ["Home","Login","SignUp","Test","InsertData","plotting_demo"]
@@ -239,7 +263,6 @@ def main():
 	choice = st.sidebar.selectbox("Menu", menu)
 
 	ExecuteCount = 0
-
 
 	if choice == "Home":
 		Info_KGSD()
