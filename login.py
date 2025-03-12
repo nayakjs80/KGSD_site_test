@@ -26,6 +26,18 @@ c = conn.cursor()
 def create_tableuserlist():
 	c.execute('CREATE TABLE IF NOT EXISTS userlist(username TEXT,password TEXT, ssn TEXT PRIMARY KEY)')
 
+def create_table(tableName):
+	c.execute(f'CREATE TABLE IF NOT EXISTS {tableName}()')
+
+def add_column_to_user_table(tableName, column_name, column_type):
+    c.execute(f'ALTER TABLE {tableName} ADD COLUMN {column_name} {column_type}')
+    conn.commit()
+
+def table_exists(table_name):
+    c.execute(f"SELECT name FROM sqlite_master WHERE type='table' AND name='{table_name}'")
+    result = c.fetchone()
+    return result is not None
+
 def create_tableuser():
 	c.execute('''
 	CREATE TABLE IF NOT EXISTS user (
@@ -232,7 +244,13 @@ def fetch_img_from_url(url: str) -> Image:
     return img
 
 def main():
-	
+
+	if('IsLogin' not in st.session_state):
+		st.session_state.IsLogin = False
+		st.session_state.username = ""
+		st.session_state.ssn = ""
+		st.session_state.password = ""
+
 	st.set_page_config(
 		page_title="MainPage",
 		page_icon="👋",
@@ -240,14 +258,23 @@ def main():
 
 	st.sidebar.header("Hello")
 	
-	img = Image.open(DEFAULT_IMG1_URL)
-	st.image(img, caption="Image caption", width=800, channels="RGB",)
+	col1, buf, col2 = st.columns([2, 1, 2])
+	with col1:
+		img = Image.open(DEFAULT_IMG1_URL)
+		st.image(img, caption="Image caption", width=300, channels="RGB",)
+	
+	with col2:
+		st.write("This is a Streamlit app.")
+
+	# if table_exists('userlists'):
+	# 	st.write("Table 'userlist' exists.")
+	# else:
+	# 	st.write("Table 'userlist' does not exist.")
 
 	# form = st.form(key="Image comparison")
 	# img1_url = form.text_input("Image one url", value=DEFAULT_IMG1_URL)
 	# img1 = fetch_img_from_url(DEFAULT_IMG1_URL)
 	# submit = form.form_submit_button("Submit")
-
 	
 	# menu = ["Home","Login","SignUp","Test"]
 	# choice = st.sidebar.selectbox("Menu",menu)
@@ -290,21 +317,25 @@ def main():
 		blood_sugar = st.number_input("혈당 입력", format="%.2f")
 		lactic_acid = st.number_input("락틱산 입력", format="%.2f")
 
-		st.text("IsLogin:{}".format(st.session_state.IsLogin))
-		st.text("username:{}".format(st.session_state.username))
-		st.text("ssn:{}".format(st.session_state.ssn))
-		# st.text("IsLogin:{}".format(seluser.IsLogin))
+		try:
+			st.text("IsLogin:{}".format(st.session_state.IsLogin))
+			st.text("username:{}".format(st.session_state.username))
+			st.text("ssn:{}".format(st.session_state.ssn))
+			# st.text("IsLogin:{}".format(seluser.IsLogin))
 
-		if(st.session_state.IsLogin):
-			if(st.button("Add Data")):
-				add_user_data(st.session_state.ssn, blood_sugar, lactic_acid)
+			if(st.session_state.IsLogin):
+				if(st.button("Add Data")):
+					add_user_data(st.session_state.ssn, blood_sugar, lactic_acid)
 
-			digit = st.session_state.ssn.replace('-','')
-			st.text("Execute TableInfo({})".format(digit))
-			TableInfo(digit)
+				digit = st.session_state.ssn.replace('-','')
+				st.text("Execute TableInfo({})".format(digit))
+				TableInfo(digit)
 
-	elif choice == "plotting_demo":
-		plotting_demo()
+			elif choice == "plotting_demo":
+				plotting_demo()
+		
+		except sqlite3.OperationalError as e:
+			st.text(f"Error:{e}")
 
 if __name__ == '__main__':
 	main()
