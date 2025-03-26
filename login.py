@@ -180,6 +180,52 @@ def SignUp():
 		else:
 			Info_KGSD()
 
+def SearchData():
+		st.sidebar.subheader("Search Data")
+
+		username = st.sidebar.text_input("Search Name")
+		MobileNumber = st.sidebar.text_input("Mobile Number")
+		EMailAddr = st.sidebar.text_input("E-Mail Info")
+
+		if st.sidebar.button("Search"):
+			file_path = 'ComsAddr_231023.xlsx'
+			df = pd.read_excel(file_path, sheet_name='연락망_23.10.23')
+
+			# st.write(df)
+			# st.write(df['Unnamed: 3'])
+			# st.write(df[3:6])
+			# st.write(df.iloc[0].values)
+			# st.write(df.columns[1])
+
+			st.success("Search Data")
+
+			# 열 이름이 데이터프레임에 존재하는지 확인
+			if 'Unnamed: 3' in df.columns:
+				# 해당 열에서 값이 target_value인 행 필터링
+				result = df[(df['Unnamed: 3'] == username.strip()) | (df['Unnamed: 6'] == MobileNumber.strip()) | (df['Unnamed: 8'] == EMailAddr.strip())]
+				st.write(result)
+
+
+
+			# # 0번째 행 가져오기
+			# first_row = df.iloc[0].values
+			# st.write(first_row)
+
+			# # 0번째 행에서 target_value를 가진 열 이름 찾기
+			# column_index = list(first_row).index('성명')
+			# st.write(df.columns[column_index].values)
+
+
+			# if '성명' in df.iloc[0]:
+			# 	# 해당 열에서 값이 target_value인 행 필터링
+			# 	result = df[df['성명'] == username]
+			# 	st.write(result)
+			# else:
+			# 	st.write(f"'{username}' 열이 존재하지 않습니다.")
+			
+				# search_result = df[df['성명'] == username]
+				# st.write(search_result)
+
 def Test():
 		result1 = triangle_area(200, 20)
 		result2 = rectangle_area(200, 20)
@@ -258,13 +304,15 @@ def main():
 
 	st.sidebar.header("Hello")
 	
-	col1, buf, col2 = st.columns([2, 1, 2])
-	with col1:
-		img = Image.open(DEFAULT_IMG1_URL)
-		st.image(img, caption="Image caption", width=300, channels="RGB",)
+	# Image comparison
+	# 
+	# col1, buf, col2 = st.columns([2, 1, 2])
+	# with col1:
+	# 	img = Image.open(DEFAULT_IMG1_URL)
+	# 	st.image(img, caption="Image caption", width=300, channels="RGB",)
 	
-	with col2:
-		st.write("This is a Streamlit app.")
+	# with col2:
+	# 	st.write("This is a Streamlit app.")
 
 	# if table_exists('userlists'):
 	# 	st.write("Table 'userlist' exists.")
@@ -284,7 +332,8 @@ def main():
 
 	st.title("Hello .. [KGSD]")
 
-	menu = ["Home","Login","SignUp","InsertData"]
+	menu = ["Home", "SearchData"]
+	# menu = ["Home","Login","SignUp","InsertData", "SearchData"]
 	# menu = ["Home","Login","SignUp","Test","InsertData","plotting_demo"]
 
 	choice = st.sidebar.selectbox("Menu", menu)
@@ -305,6 +354,9 @@ def main():
 
 	elif choice == "SignUp":
 		SignUp()
+	elif choice == "SearchData":
+		SearchData()
+
 	elif choice == "Test":
 		# intro()
 		result1 = triangle_area(200, 20)
