@@ -279,7 +279,7 @@ seluser = clsUser("","","")
 
 
 DEFAULT_IMG1_URL = (
-	"Image/IMG_1995-COLLAGE.jpg"
+	"Image/PageTop_1.jpg"
 	# "https://photos.google.com/share/AF1QipN_VeP1rOL91aSnl_q79Xr9p0dand4aTPWx1wjZ9uCqJ_7mkpKhBCiVnMTAvSQTHg/photo/AF1QipN6AR6xNKSuGt659jWij5h45epQ0ladTi_RlYDo?key=TkhaSHU0cGJxemR1bEZvWk8tdlB4MzliYklZX0pn"
 	# "https://photos.app.goo.gl/cr9YBqoSch4dYiXX8"
     # "https://juxtapose.knightlab.com/static/img/Sochi_11April2005.jpg"
@@ -302,15 +302,21 @@ def main():
 		page_icon="👋",
 	)
 
-	st.sidebar.header("Hello")
-	
+	# st.sidebar.header("KGSD")
+	st.sidebar.title("KGSD title")
+
 	# Image comparison
-	# 
-	# col1, buf, col2 = st.columns([2, 1, 2])
-	# with col1:
-	# 	img = Image.open(DEFAULT_IMG1_URL)
-	# 	st.image(img, caption="Image caption", width=300, channels="RGB",)
 	
+	col1, buf, col2 = st.columns([1, 1, 1])
+	with col1:
+		img = Image.open(DEFAULT_IMG1_URL)
+		st.image(img, caption="Image caption", width=1000, channels="RGB",)
+	
+
+	# img = Image.open(DEFAULT_IMG1_URL)
+	# st.image(img, caption="Image caption", width=1000, channels="RGB",)
+
+
 	# with col2:
 	# 	st.write("This is a Streamlit app.")
 
@@ -336,13 +342,14 @@ def main():
 	# menu = ["Home","Login","SignUp","InsertData", "SearchData"]
 	# menu = ["Home","Login","SignUp","Test","InsertData","plotting_demo"]
 
-	choice = st.sidebar.selectbox("Menu", menu)
+	# choice = st.sidebar.selectbox("Menu", menu)
+	selected_page = st.sidebar.radio("이동할 페이지를 선택하세요", ["Home", "소개", "걸어온길"])
 
 	ExecuteCount = 0
 
-	if choice == "Home":
+	if selected_page == "Home":
 		Info_KGSD()
-	elif choice == "Login":
+	elif selected_page == "login":
 		Login()
 		ExecuteCount += 1
 		st.text("ExecuteCount:{}".format(ExecuteCount))
@@ -351,19 +358,25 @@ def main():
 			st.markdown("Login Info : OK login")
 		else:
 			st.markdown("Login Info : NG login")
+	
+	elif selected_page == "소개":
+		st.text("Page 소개")
 
-	elif choice == "SignUp":
+	elif selected_page == "걸어온길":
+		st.text("Page 걸어온길")
+
+	elif selected_page == "SignUp":
 		SignUp()
-	elif choice == "SearchData":
+	elif selected_page == "SearchData":
 		SearchData()
 
-	elif choice == "Test":
+	elif selected_page == "Test":
 		# intro()
 		result1 = triangle_area(200, 20)
 		result2 = rectangle_area(200, 20)
 		st.write(result1)
 		st.write(result2)
-	elif choice == "InsertData":
+	elif selected_page == "InsertData":
 		# InsertData_demo()
 		
 		blood_sugar = st.number_input("혈당 입력", format="%.2f")
@@ -375,16 +388,16 @@ def main():
 			st.text("ssn:{}".format(st.session_state.ssn))
 			# st.text("IsLogin:{}".format(seluser.IsLogin))
 
-			if(st.session_state.IsLogin):
-				if(st.button("Add Data")):
-					add_user_data(st.session_state.ssn, blood_sugar, lactic_acid)
+			# if(st.session_state.IsLogin):
+			# 	if(st.button("Add Data")):
+			# 		add_user_data(st.session_state.ssn, blood_sugar, lactic_acid)
 
-				digit = st.session_state.ssn.replace('-','')
-				st.text("Execute TableInfo({})".format(digit))
-				TableInfo(digit)
+			# 	digit = st.session_state.ssn.replace('-','')
+			# 	st.text("Execute TableInfo({})".format(digit))
+			# 	TableInfo(digit)
 
-			elif choice == "plotting_demo":
-				plotting_demo()
+			# elif choice == "plotting_demo":
+			# 	plotting_demo()
 		
 		except sqlite3.OperationalError as e:
 			st.text(f"Error:{e}")
