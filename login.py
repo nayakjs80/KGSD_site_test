@@ -302,20 +302,19 @@ def main():
 		page_icon="👋",
 	)
 
+	img = Image.open(DEFAULT_IMG1_URL)
+	st.image(img, caption="Image caption", width=1000, channels="RGB",)
+
 	# st.sidebar.header("KGSD")
 	st.sidebar.title("KGSD title")
 
 	# Image comparison
 	
-	col1, buf, col2 = st.columns([1, 1, 1])
-	with col1:
-		img = Image.open(DEFAULT_IMG1_URL)
-		st.image(img, caption="Image caption", width=1000, channels="RGB",)
+	# col1, buf, col2 = st.columns([1, 1, 1])
+	# with col1:
+	# 	img = Image.open(DEFAULT_IMG1_URL)
+	# 	st.image(img, caption="Image caption", width=1000, channels="RGB",)
 	
-
-	# img = Image.open(DEFAULT_IMG1_URL)
-	# st.image(img, caption="Image caption", width=1000, channels="RGB",)
-
 
 	# with col2:
 	# 	st.write("This is a Streamlit app.")
@@ -336,20 +335,98 @@ def main():
     # demo_name = st.sidebar.selectbox("Choose a demo", page_names_to_funcs.keys())
     # page_names_to_funcs[demo_name]()
 
-	st.title("Hello .. [KGSD]")
+	# st.title("Hello .. [KGSD]")
 
-	menu = ["Home", "SearchData"]
+	# menu = ["Home", "SearchData"]
 	# menu = ["Home","Login","SignUp","InsertData", "SearchData"]
 	# menu = ["Home","Login","SignUp","Test","InsertData","plotting_demo"]
 
 	# choice = st.sidebar.selectbox("Menu", menu)
-	selected_page = st.sidebar.radio("이동할 페이지를 선택하세요", ["Home", "소개", "걸어온길"])
+	# selected_page = st.sidebar.radio("이동할 페이지를 선택하세요", ["Home", "소개", "걸어온길"])
 
-	ExecuteCount = 0
+	# menu_items = ["Home", "소개", "걸어온길"]
 
-	if selected_page == "Home":
+	# # 라디오 버튼으로 선택 기능 유지
+	# selected_page = st.sidebar.radio("이동할 페이지를 선택하세요", menu_items)
+
+	# # 선택된 항목에 따라 내용 표시 + 구분선
+	# st.sidebar.markdown("---")
+	# for item in menu_items:
+	# 	if item == selected_page:
+	# 		st.sidebar.markdown(f"✅ **{item}** 선택됨")
+	# 	else:
+	# 		st.sidebar.markdown(f"**{item}**")
+	# 	st.sidebar.markdown("---")
+
+	# # 본문에 선택된 페이지 내용 출력
+	# if selected_page == "Home":
+	# 	st.write("🏠 홈 페이지입니다.")
+	# elif selected_page == "소개":
+	# 	st.write("📘 소개 페이지입니다.")
+	# elif selected_page == "걸어온길":
+	# 	st.write("🛤️ 걸어온 길 페이지입니다.")
+
+	# 초기 상태 설정
+	if "selected_page" not in st.session_state:
+		st.session_state.selected_page = "Home"
+
+	# st.sidebar.markdown("""
+	# 	<style>
+	# 		.link-button {
+	# 			background: none;
+	# 			border: none;
+	# 			color: #555555;  /* 기본 회색 */
+	# 			text-decoration: underline;
+	# 			cursor: pointer;
+	# 			font-size: 16px;
+	# 			padding: 4px 0;
+	# 		}
+	# 		.link-button:hover {
+	# 			color: #888888;  /* hover 시 더 연한 회색 */
+	# 		}
+	# 	</style>
+	# """, unsafe_allow_html=True)
+
+	st.sidebar.markdown("""
+		<style>
+			button[kind="primary"] {
+				background: none !important;
+				border: none !important;
+				color: #666666 !important;
+				text-decoration: underline !important;
+				font-size: 16px !important;
+				padding: 0 !important;
+			}
+			button[kind="primary"]:hover {
+				color: #999999 !important;
+			}
+		</style>
+	""", unsafe_allow_html=True)
+
+	# st.sidebar.title("KGSD title")
+	st.sidebar.markdown("### --📂-- 메뉴")
+
+	# 메뉴 항목 리스트
+	menu_items = ["Home", "소개", "걸어온길", "같이하는 동료"]
+
+	# 밑줄 텍스트 버튼 생성
+	for item in menu_items:
+		if st.sidebar.button(item, key=item, help=f"{item} 페이지로 이동", type="primary"):
+			st.session_state.selected_page = item
+		st.sidebar.markdown("---")
+
+	# # 버튼 스타일로 마크다운 텍스트 클릭 구현
+	# for item in menu_items:
+	# 	if st.sidebar.button(item):
+	# 		st.session_state.selected_page = item
+	# 	st.sidebar.markdown("---")  # 항목 사이 구분선
+
+
+
+
+	if st.session_state.selected_page == "Home":
 		Info_KGSD()
-	elif selected_page == "login":
+	elif st.session_state.selected_page == "login":
 		Login()
 		ExecuteCount += 1
 		st.text("ExecuteCount:{}".format(ExecuteCount))
@@ -359,24 +436,24 @@ def main():
 		else:
 			st.markdown("Login Info : NG login")
 	
-	elif selected_page == "소개":
+	elif st.session_state.selected_page == "소개":
 		st.text("Page 소개")
 
-	elif selected_page == "걸어온길":
+	elif st.session_state.selected_page == "걸어온길":
 		st.text("Page 걸어온길")
 
-	elif selected_page == "SignUp":
+	elif st.session_state.selected_page == "SignUp":
 		SignUp()
-	elif selected_page == "SearchData":
+	elif st.session_state.selected_page == "SearchData":
 		SearchData()
 
-	elif selected_page == "Test":
+	elif st.session_state.selected_page == "Test":
 		# intro()
 		result1 = triangle_area(200, 20)
 		result2 = rectangle_area(200, 20)
 		st.write(result1)
 		st.write(result2)
-	elif selected_page == "InsertData":
+	elif st.session_state.selected_page == "InsertData":
 		# InsertData_demo()
 		
 		blood_sugar = st.number_input("혈당 입력", format="%.2f")
