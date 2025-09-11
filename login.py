@@ -442,6 +442,9 @@ def main():
 	elif st.session_state.selected_page == "걸어온길":
 		st.text("Page 걸어온길")
 
+	elif st.session_state.selected_page == "같이하는 동료":
+		st.text("Page 같이하는 동료")
+		
 	elif st.session_state.selected_page == "SignUp":
 		SignUp()
 	elif st.session_state.selected_page == "SearchData":
