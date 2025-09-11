@@ -303,7 +303,7 @@ def main():
 	)
 
 	img = Image.open(DEFAULT_IMG1_URL)
-	st.image(img, caption="Image caption", width=1000, channels="RGB",)
+	st.image(img, caption="Image caption", width=500, channels="RGB",)
 
 	# st.sidebar.header("KGSD")
 	st.sidebar.title("KGSD title")
