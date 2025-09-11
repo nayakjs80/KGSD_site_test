@@ -86,9 +86,9 @@ def get_ssn_by_username(username):
     return None
 
 def Info_KGSD():
-    st.subheader("KGSD 의료 데이터")
+    st.subheader("KGSD 환우회에 오신 것을 환영합니다!")
     st.markdown("""
-    KGSD 의료 데이터에 오신 것을 환영합니다. 저희는 의료 데이터를 관리하고 분석하는 신뢰할 수 있는 플랫폼입니다.
+    KGSD 환우회에 오신 것을 환영합니다. 저희는 환우회를 관리하고 분석하는 신뢰할 수 있는 플랫폼입니다.
     
     **특징:**
     - 안전한 사용자 인증 및 데이터 관리
@@ -105,7 +105,7 @@ def Info_KGSD():
     **문의하기:**
     - 지원이나 문의 사항이 있으시면 k.gsd.ric@gmail.com으로 연락해 주세요
 
-    KGSD 의료 데이터를 선택해 주셔서 감사합니다!
+    KGSD 환우회를 방문해 주셔서 감사합니다!
     """)
 
 
