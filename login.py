@@ -306,7 +306,7 @@ def main():
 	st.image(img, caption="Image caption", width=350, channels="RGB",)
 
 	# st.sidebar.header("KGSD")
-	st.sidebar.title("KGSD title")
+	st.sidebar.title("KGSD Home")
 
 	# Image comparison
 	
@@ -444,7 +444,7 @@ def main():
 
 	elif st.session_state.selected_page == "같이하는 동료":
 		st.text("Page 같이하는 동료")
-		
+
 	elif st.session_state.selected_page == "SignUp":
 		SignUp()
 	elif st.session_state.selected_page == "SearchData":
