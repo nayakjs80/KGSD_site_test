@@ -111,7 +111,7 @@ def Info_KGSD():
 def KGSD_History():
 	# st.text("Page 걸어온길")
 	st.markdown("""
-		<h2 style='color:#2c3e50;'>걸어온길 페이지</h2>
+		<h2 style='color:#2c3e50;'>걸어온 길 페이지</h2>
 	""", unsafe_allow_html=True)
 
 	st.markdown("""
@@ -159,11 +159,10 @@ def KGSD_History():
 	<div class="card">
 		<h3>2023년</h3>
 		<p>3월 - 환우회 가입 설문 조사 시작</p>
-		<p>5월 - 당원병 환우회 발대식 (<a href="https://youtu.be/rxfnt7fPUsE" target="_blank">영상 링크</a>)</p>
+		<p>5월 - <a href="https://youtu.be/rxfnt7fPUsE" target="_blank">당원병 환우회 발대식</a></p>
 		<p>7월 - 질병관리청 연구용역 발주 [희귀질환자 의료비 지원사업 개편방안연구]</p>
 		<p>10월 - 강윤구 교수님과 함께하는 당원병이 궁금하세요? (질의 응답 동영상 촬영)</p>
-		<p>춘천 마라톤 대회 참여 [10 km] (with 강윤구 교수)</p>
-		<p>기사 링크: <a href="https://m.sports.naver.com/general/article/023/0003796156" target="_blank">춘천 마라톤 대회 참여</a></p>
+		<p>  <a href="https://m.sports.naver.com/general/article/023/0003796156" target="_blank">춘천 마라톤 대회 참여</a></p>
 	</div>
 	""", unsafe_allow_html=True)
 
@@ -172,15 +171,14 @@ def KGSD_History():
 	<div class="card">
 		<h3>2024년</h3>
 		<p>2월 - 당원병 아르고 전분 국가 지원 시작</p>
-		<p>  - 희귀질환 극복의날 활동 발표 진행 (with 김은성)</p>
+		<p>  - 질병청 희귀질환 극복의날 활동 발표 진행 (with 김은성)</p>
 		<p>3월 - 찾아가는 지역별 간담회 (광주, 전라)</p>
 		<p>  - 찾아가는 지역별 간담회 (영남)</p>
 		<p>4월 - 찾아가는 지역별 간담회 (충청권)</p>
 		<p>5월 - 찾아가는 지역별 간담회 (서울 경기)</p>
 		<p>  - 인터랙트 케익 만들기 행사</p>
 		<p>10월 - 카카오 헬스케어와 함께하는 당원병 환우회 정기모임</p>
-		<p>  - 카카오 헬스케어 / 당원병 환우회 업무 협의 (AI-디지털 기술 활용 솔루션 개발 협력)</p>
-		<p>  기사 링크: <a href="https://www.pointdaily.co.kr/news/articleView.html?idxno=222350" target="_blank">카카헬스케어 / 당원병 환우회 업무 협의</a></p>
+		<p>  <a href="https://www.pointdaily.co.kr/news/articleView.html?idxno=222350" target="_blank">카카헬스케어 / 당원병 환우회 업무 협의 (AI-디지털 기술 활용 솔루션 개발 협력)</a></p>
 	</div>
 	""", unsafe_allow_html=True)
 
@@ -188,7 +186,13 @@ def KGSD_History():
 	st.markdown("""
 	<div class="card">
 		<h3>2025년</h3>
+		<p>2월 - 질병청 희귀질환 극복의날 행사 참석</p>
+		<p>4월 - 성인 환후 간담회(Online)</p>
+		<p>6월 - 질병청, 건강보험공단, 당원병 환우회 간담회</p>
+		<p>7월 - 경기도 힐링 콘서트(for 희귀질환 가족) 참여</p>
+		<p>    - 식약처 간담회 진행</p>			 
 		<p>9월 - 당원병 글리코세이드 국가 지원 시작</p>
+		<p>    - 최보윤 국회의원 간담회</p>
 	</div>
 	""", unsafe_allow_html=True)
 
@@ -432,10 +436,10 @@ def main():
 	)
 
 	img = Image.open(DEFAULT_IMG1_URL)
-	st.image(img, caption="Image caption", width=350, channels="RGB",)
+	st.image(img, caption="2024 당원병 환우회 정기 모임", width=350, channels="RGB",)
 
 	# st.sidebar.header("KGSD")
-	st.sidebar.title("KGSD Home")
+	st.sidebar.title("당원병 환우회 ---- 홈페이지")
 
 	# Image comparison
 	
@@ -536,7 +540,7 @@ def main():
 	st.sidebar.markdown("### --📂-- 메뉴")
 
 	# 메뉴 항목 리스트
-	menu_items = ["Home", "소개", "걸어온길", "같이하는 동료"]
+	menu_items = ["Home", "소개", "걸어온 길", "같이하는 동료"]
 
 	# 밑줄 텍스트 버튼 생성
 	for item in menu_items:
@@ -568,7 +572,7 @@ def main():
 	elif st.session_state.selected_page == "소개":
 		st.text("Page 소개")
 
-	elif st.session_state.selected_page == "걸어온길":
+	elif st.session_state.selected_page == "걸어온 길":
 		KGSD_History()
 
 	elif st.session_state.selected_page == "같이하는 동료":
