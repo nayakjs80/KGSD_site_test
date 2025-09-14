@@ -119,26 +119,6 @@ def Info_KGSD():
 		</style>
 	""", unsafe_allow_html=True)
 
-
-	# st.markdown("""
-	# <div class="card">
-
-	# 	특징
-	# 	최신 정보: 당원병 관련 최신 연구, 치료법, 뉴스 등을 제공합니다.
-	# 	커뮤니티 지원: 환자와 가족들이 서로 경험을 공유하고 
-	# 	지원할 수 있는 공간을 제공합니다.
-	# 	전문가 연결: 의료 전문가와의 연결을 통해 신뢰할 수 있는 정보를 제공합니다.
-	# 	이벤트 및 모임: 정기적인 모임과 이벤트를 통해 	 
-	# 	환자와 가족들이 서로 교류할 수 있는 기회를 제공합니다.		 
-	# 	자원 및 자료: 당원병 관리에 도움이 되는 다양한 자료와 자원을 제공합니다.
-			 
-	# 	문의하기<
-	# 	지원이나 문의 사항이 있으시면 k.gsd.ric@gmail.com으로 연락해 주세요
-			 
-	# 	한국 당원 환우회를 방문해 주셔서 감사합니다!
-	# </div>
-	# """, unsafe_allow_html=True)
-
 	# 
 	st.markdown("""
 	<div class="card">
@@ -157,8 +137,7 @@ def Info_KGSD():
 	st.markdown("""
 	<div class="card">
 		<h3>가입 방법 </h3>
-		<p>당원병 네이버 카페에 가입해 주세요: </p>
-		<p><a href="https://cafe.naver.com/koreagsd" target="_blank">한국 당원병 환우회</a></p>
+		<p>당원병 네이버 카페에 가입해 주세요: <a href="https://cafe.naver.com/koreagsd" target="_blank">한국 당원병 환우회</a></p>
 		<p>가입 요청 글과 연락처를 남겨주세요.</p>
 		<p>가입 승인이 완료되면 환우회 활동에 참여하실 수 있습니다.</p>
 	</div>
