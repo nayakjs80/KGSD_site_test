@@ -108,6 +108,52 @@ def Info_KGSD():
     KGSD 환우회를 방문해 주셔서 감사합니다!
     """)
 
+def KGSD_History():
+
+	st.markdown("<hr>", unsafe_allow_html=True)  # HTML 방식
+	st.subheader("2021년 ~")
+	st.markdown("""
+	- 12월 - 당원병 이야기 카페 개설 <br>
+	""")
+
+	st.markdown("<hr>", unsafe_allow_html=True)  # HTML 방식
+	st.subheader("2022년 ~")
+	st.markdown("""
+	7월 - 당원병 환우 모임 및 세미나 <br>
+	12월 - 한국 당원병 환우회 가족 모임 (with 원주세브란스기독병원 희귀질환센터) <br>
+	""", unsafe_allow_html=True)
+
+	st.markdown("<hr>", unsafe_allow_html=True)  # HTML 방식
+	st.subheader("2023년 ~")
+	st.markdown("""
+	  3월 - 환우회 가입 설문 조사 시작 <br>
+	  5월 - 당원병 환우회 발대식 (영상 링크 : https://youtu.be/rxfnt7fPUsE) <br>
+	  7월 - 질병관리청 연구용역 발주 [ 희귀질한자 의료비 지원사업 개편방안연구 ] <br>
+	  10월 - 강윤구 교수님과 함께하는 당원병이 궁금하세요? (질의 응답 동영상 촬영) <br>
+    		- 춘천 마라톤 대회 참여 [10 km] (with 강윤구 교수 ) <br>
+			  기사링크([당원병 안고 10㎞ 완주… 아이들은 강했다](https://m.sports.naver.com/general/article/023/0003796156))	 <br>
+	""", unsafe_allow_html=True)
+
+	st.markdown("<hr>", unsafe_allow_html=True)  # HTML 방식
+	st.subheader("2024년 ~")
+	st.markdown("""
+	2월  - 당원병 아르고 전분 국가 지원 시작 <br>
+			- 희귀질환 극복의날 활동 발표 진행 ( with 김은성 ) <br>
+	3월 - 찾아가는 지역별 간담회 ( 광주, 전라 간담회) <br>
+		- 찾아가는 지역별 간담회 ( 영남 간담회) <br>
+	4월 - 찾아가는 지역별 간담회 ( 충청권 간담회) <br>
+	5월  - 찾아가는 지역별 간담회 ( 서울 경기 간담회) <br>
+			- 인터랙트 케익 만들기 행사 <br>
+	10월 - 카카오 헬스케어 와 함께 하는 당원병 환우회 정기모임 ( with 카카오 헬스케어 ) <br>
+			- 카카오 헬스 케어 / 당원병 환우회 업무 협의 (AI-디지털 기술 활용 솔루션 개발 협력) <br>
+				기사 링크(https://www.pointdaily.co.kr/news/articleView.html?idxno=222350) <br>
+	""", unsafe_allow_html=True)
+
+	st.markdown("<hr>", unsafe_allow_html=True)  # HTML 방식
+	st.subheader("2025년 ~")
+	st.markdown("""
+	9월 - 당원병 글리코세이드 국가 지원 시작	
+	""", unsafe_allow_html=True)		
 
 def Login():
 		Info_KGSD()
@@ -441,6 +487,7 @@ def main():
 
 	elif st.session_state.selected_page == "걸어온길":
 		st.text("Page 걸어온길")
+		KGSD_History()
 
 	elif st.session_state.selected_page == "같이하는 동료":
 		st.text("Page 같이하는 동료")
