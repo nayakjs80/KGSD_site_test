@@ -158,7 +158,7 @@ def Info_KGSD():
 	<div class="card">
 		<h3>가입 방법 </h3>
 		<p>당원병 네이버 카페에 가입해 주세요: </p>
-		<p><a href="https://cafe.naver.com/koreagsd" target="_blank">당원병 이야기 카페</a></p>
+		<p><a href="https://cafe.naver.com/koreagsd" target="_blank">한국 당원병 환우회</a></p>
 		<p>가입 요청 글과 연락처를 남겨주세요.</p>
 		<p>가입 승인이 완료되면 환우회 활동에 참여하실 수 있습니다.</p>
 	</div>
