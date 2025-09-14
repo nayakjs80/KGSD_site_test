@@ -138,31 +138,17 @@ def KGSD_History():
 		</style>
 	""", unsafe_allow_html=True)
 
+	# 2025년 카드
 	st.markdown("""
 	<div class="card">
-		<h3>2021년</h3>
-		<p>12월 - 당원병 이야기 카페 개설</p>
-	</div>
-	""", unsafe_allow_html=True)
-
-	# 카드 2
-	st.markdown("""
-	<div class="card">
-		<h3>2022년</h3>
-		<p>7월 - 당원병 환우 모임 및 세미나</p>
-		<p>12월 - 한국 당원병 환우회 가족 모임 (with 원주세브란스기독병원 희귀질환센터)</p>
-	</div>
-	""", unsafe_allow_html=True)
-
-	# 카드 3
-	st.markdown("""
-	<div class="card">
-		<h3>2023년</h3>
-		<p>3월 - 환우회 가입 설문 조사 시작</p>
-		<p>5월 - <a href="https://youtu.be/rxfnt7fPUsE" target="_blank">당원병 환우회 발대식</a></p>
-		<p>7월 - 질병관리청 연구용역 발주 [희귀질환자 의료비 지원사업 개편방안연구]</p>
-		<p>10월 - 강윤구 교수님과 함께하는 당원병이 궁금하세요? (질의 응답 동영상 촬영)</p>
-		<p>  <a href="https://m.sports.naver.com/general/article/023/0003796156" target="_blank">춘천 마라톤 대회 참여</a></p>
+		<h3>2025년</h3>
+		<p>2월 - 질병청 희귀질환 극복의날 행사 참석</p>
+		<p>4월 - 성인 환후 간담회(Online)</p>
+		<p>6월 - 질병청, 건강보험공단, 당원병 환우회 간담회</p>
+		<p>7월 - 경기도 힐링 콘서트(for 희귀질환 가족) 참여</p>
+		<p>    - 식약처 간담회 진행</p>			 
+		<p>9월 - 당원병 글리코세이드 국가 지원 시작</p>
+		<p>    - 최보윤 국회의원 간담회</p>
 	</div>
 	""", unsafe_allow_html=True)
 
@@ -182,17 +168,33 @@ def KGSD_History():
 	</div>
 	""", unsafe_allow_html=True)
 
-	# 2025년 카드
+	# 2023 카드 3
 	st.markdown("""
 	<div class="card">
-		<h3>2025년</h3>
-		<p>2월 - 질병청 희귀질환 극복의날 행사 참석</p>
-		<p>4월 - 성인 환후 간담회(Online)</p>
-		<p>6월 - 질병청, 건강보험공단, 당원병 환우회 간담회</p>
-		<p>7월 - 경기도 힐링 콘서트(for 희귀질환 가족) 참여</p>
-		<p>    - 식약처 간담회 진행</p>			 
-		<p>9월 - 당원병 글리코세이드 국가 지원 시작</p>
-		<p>    - 최보윤 국회의원 간담회</p>
+		<h3>2023년</h3>
+		<p>3월 - 환우회 가입 설문 조사 시작</p>
+		<p>5월 - <a href="https://youtu.be/rxfnt7fPUsE" target="_blank">당원병 환우회 발대식</a></p>
+		<p>7월 - 질병관리청 연구용역 발주 [희귀질환자 의료비 지원사업 개편방안연구]</p>
+		<p>10월 - 강윤구 교수님과 함께하는 당원병이 궁금하세요? (질의 응답 동영상 촬영)</p>
+		<p>  <a href="https://m.sports.naver.com/general/article/023/0003796156" target="_blank">춘천 마라톤 대회 참여</a></p>
+	</div>
+	""", unsafe_allow_html=True)
+
+	# 2022 카드 2
+	st.markdown("""
+	<div class="card">
+		<h3>2022년</h3>
+		<p>7월 - 당원병 환우 모임 및 세미나</p>
+		<p>12월 - 한국 당원병 환우회 가족 모임 (with 원주세브란스기독병원 희귀질환센터)</p>
+	</div>
+	""", unsafe_allow_html=True)
+
+
+	# 2021 카드 2
+	st.markdown("""
+	<div class="card">
+		<h3>2021년</h3>
+		<p>12월 - 당원병 이야기 카페 개설</p>
 	</div>
 	""", unsafe_allow_html=True)
 
