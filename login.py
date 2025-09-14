@@ -507,7 +507,7 @@ def main():
 	st.image(img, caption="2024 당원병 환우회 정기 모임", width=350, channels="RGB",)
 
 	# st.sidebar.header("KGSD")
-	st.sidebar.title("당원병 환우회 ---- 홈페이지")
+	st.sidebar.title("한국 당원병 환우회")
 
 	# Image comparison
 	
@@ -608,7 +608,7 @@ def main():
 	st.sidebar.markdown("### --📂-- 메뉴")
 
 	# 메뉴 항목 리스트
-	menu_items = ["Home", "소개", "걸어온 길", "같이하는 동료"]
+	menu_items = ["소개", "걸어온 길", "같이하는 동료"]
 
 	# 밑줄 텍스트 버튼 생성
 	for item in menu_items:
@@ -638,7 +638,7 @@ def main():
 			st.markdown("Login Info : NG login")
 	
 	elif st.session_state.selected_page == "소개":
-		st.text("Page 소개")
+		Info_KGSD()
 
 	elif st.session_state.selected_page == "걸어온 길":
 		KGSD_History()
