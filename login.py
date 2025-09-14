@@ -163,7 +163,7 @@ def KGSD_History():
 		<p>7월 - 질병관리청 연구용역 발주 [희귀질환자 의료비 지원사업 개편방안연구]</p>
 		<p>10월 - 강윤구 교수님과 함께하는 당원병이 궁금하세요? (질의 응답 동영상 촬영)</p>
 		<p>춘천 마라톤 대회 참여 [10 km] (with 강윤구 교수)</p>
-		<p>기사 링크: <a href="https://m.sports.naver.com/general/article/023/0003796156" target="_blank">당원병 안고 10㎞ 완주… 아이들은 강했다</a></p>
+		<p>기사 링크: <a href="https://m.sports.naver.com/general/article/023/0003796156" target="_blank">춘천 마라톤 대회 참여</a></p>
 	</div>
 	""", unsafe_allow_html=True)
 
@@ -180,7 +180,7 @@ def KGSD_History():
 		<p>  - 인터랙트 케익 만들기 행사</p>
 		<p>10월 - 카카오 헬스케어와 함께하는 당원병 환우회 정기모임</p>
 		<p>  - 카카오 헬스케어 / 당원병 환우회 업무 협의 (AI-디지털 기술 활용 솔루션 개발 협력)</p>
-		<p>  기사 링크: <a href="https://www.pointdaily.co.kr/news/articleView.html?idxno=222350" target="_blank">포인트데일리 기사 보기</a></p>
+		<p>  기사 링크: <a href="https://www.pointdaily.co.kr/news/articleView.html?idxno=222350" target="_blank">카카헬스케어 / 당원병 환우회 업무 협의</a></p>
 	</div>
 	""", unsafe_allow_html=True)
 
