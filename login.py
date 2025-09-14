@@ -86,27 +86,93 @@ def get_ssn_by_username(username):
     return None
 
 def Info_KGSD():
-    st.subheader("KGSD 환우회에 오신 것을 환영합니다!")
-    st.markdown("""
-    KGSD 환우회에 오신 것을 환영합니다. 저희는 환우회를 관리하고 분석하는 신뢰할 수 있는 플랫폼입니다.
-    
-    **특징:**
-    - 안전한 사용자 인증 및 데이터 관리
-    - 의료 기록을 추가하고 조회할 수 있는 사용하기 쉬운 인터페이스
-    - 의료 데이터 통찰력을 위한 분석 도구
-    - 의료 동향을 더 잘 이해할 수 있는 데이터 시각화
+    # st.subheader("한국 당원병 환우회에 오신 것을 환영합니다!")
 
-    **사용 방법:**
-    - 새 계정을 등록하거나 기존 자격 증명으로 로그인하세요
-    - 메뉴를 통해 다양한 기능에 접근하세요
-    - 새로운 의료 데이터를 추가하거나 기존 기록을 조회하세요
-    - 분석 도구를 사용하여 데이터에서 통찰력을 얻으세요
+	st.markdown("""
+		<h2 style='color:#2c3e50;'>한국 당원병 환우회에 오신 것을 환영합니다!</h2>
+	""", unsafe_allow_html=True)
 
-    **문의하기:**
-    - 지원이나 문의 사항이 있으시면 k.gsd.ric@gmail.com으로 연락해 주세요
+		# <h2>저희는 당원병 환자와 가족들을 위한 지원과 
+		# 	 정보를 제공하는 커뮤니티입니다.</h2>
 
-    KGSD 환우회를 방문해 주셔서 감사합니다!
-    """)
+	st.markdown("""
+		<style>
+			.card {
+				background-color: #f9f9f9;
+				padding: 20px;
+				margin-bottom: 20px;
+				border-radius: 10px;
+				box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+			}
+			.card h3 {
+				margin-top: 0;
+				color: #333;
+			}
+			.card p {
+				margin: 5px 0;
+				color: #555;
+			}
+			.card a {
+				color: #1f77b4;
+				text-decoration: underline;
+			}
+		</style>
+	""", unsafe_allow_html=True)
+
+
+	# st.markdown("""
+	# <div class="card">
+
+	# 	특징
+	# 	최신 정보: 당원병 관련 최신 연구, 치료법, 뉴스 등을 제공합니다.
+	# 	커뮤니티 지원: 환자와 가족들이 서로 경험을 공유하고 
+	# 	지원할 수 있는 공간을 제공합니다.
+	# 	전문가 연결: 의료 전문가와의 연결을 통해 신뢰할 수 있는 정보를 제공합니다.
+	# 	이벤트 및 모임: 정기적인 모임과 이벤트를 통해 	 
+	# 	환자와 가족들이 서로 교류할 수 있는 기회를 제공합니다.		 
+	# 	자원 및 자료: 당원병 관리에 도움이 되는 다양한 자료와 자원을 제공합니다.
+			 
+	# 	문의하기<
+	# 	지원이나 문의 사항이 있으시면 k.gsd.ric@gmail.com으로 연락해 주세요
+			 
+	# 	한국 당원 환우회를 방문해 주셔서 감사합니다!
+	# </div>
+	# """, unsafe_allow_html=True)
+
+	# 
+	st.markdown("""
+	<div class="card">
+		<h3>특징 </h3>
+		<p>최신 정보: 당원병 관련 최신 연구, 치료법, 뉴스 등을 제공합니다.</p>
+		<p>커뮤니티 지원: 환자와 가족들이 서로 경험을 공유하고</p>
+		<p>지원할 수 있는 공간을 제공합니다.</p>
+		<p>전문가 연결: 의료 전문가와의 연결을 통해 신뢰할 수 있는 정보를 제공합니다.</p>
+		<p>이벤트 및 모임: 정기적인 모임과 이벤트를 통해</p>
+		<p>환자와 가족들이 서로 교류할 수 있는 기회를 제공합니다.</p>
+		<p>자원 및 자료: 당원병 관리에 도움이 되는 다양한 자료와 자원을 제공합니다.</p>
+	</div>
+	""", unsafe_allow_html=True)
+
+	# 
+	st.markdown("""
+	<div class="card">
+		<h3>가입 방법 </h3>
+		<p>당원병 네이버 카페에 가입해 주세요: </p>
+		<p><a href="https://cafe.naver.com/koreagsd" target="_blank">당원병 이야기 카페</a></p>
+		<p>가입 요청 글과 연락처를 남겨주세요.</p>
+		<p>가입 승인이 완료되면 환우회 활동에 참여하실 수 있습니다.</p>
+	</div>
+	""", unsafe_allow_html=True)
+
+	# 
+	st.markdown("""
+	<div class="card">
+		<h3>문의하기 </h3>
+		<p>지원이나 문의 사항이 있으시면 k.gsd.ric@gmail.com으로 연락해 주세요</p>
+		<p>한국 당원 환우회를 방문해 주셔서 감사합니다!</p>
+	</div>
+	""", unsafe_allow_html=True)
+
 
 def KGSD_History():
 	# st.text("Page 걸어온길")
